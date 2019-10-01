@@ -10,9 +10,14 @@ import UIKit
 
 class FoodTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var recipeTitle: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        mainView.layer.cornerRadius = 5
+        recipeImage.layer.cornerRadius = 18
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
