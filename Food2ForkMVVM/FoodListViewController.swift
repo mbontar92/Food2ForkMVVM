@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SelectedRecipeDelegate: class {
-    func recipeSelected(_ newRecipe: RecipeModel)
+    func recipeSelected(_ recipe: RecipeModel)
 }
 
 class FoodListViewController: UIViewController {
@@ -20,21 +20,25 @@ class FoodListViewController: UIViewController {
     var recipeModelArray : [RecipeModel] = []
     var recipeModel : Recipe?
     
-     weak var delegate: SelectedRecipeDelegate?
+    weak var delegate: SelectedRecipeDelegate?
+    
+    let animationProgressView = UIView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "FoodTableViewCell")
-        tableView.backgroundView = UIImageView(image: UIImage(named: "pineapple"))
-        tableView.backgroundView?.contentMode = .scaleAspectFill
-        /*
-         APIManager.sharedInstance.getRecipesListRequest(query: "", page: "1") { (response) in
-         if let response = response {
-         self.recipeModelArray = response.recipes!
-         }
-         }
-         */
+        setUpTableView()
+        
+        
+        APIManager.sharedInstance.getRecipesListRequest(query: "", page: "1") { (response) in
+            if let response = response {
+                self.recipeModelArray = response.recipes!
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
         
         /*
          APIManager.sharedInstance.getRecipesDetailRequest(id: "2147") { (response) in
@@ -46,36 +50,53 @@ class FoodListViewController: UIViewController {
         */
         
     }
+    
+    func setUpTableView() {
+        tableView.register(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "FoodTableViewCell")
+        tableView.backgroundView = UIImageView(image: UIImage(named: "pineapple"))
+        tableView.backgroundView?.contentMode = .scaleAspectFill
+    }
+    
+    func setUpAnimationView() {
+        let width = view.frame.width/3
+        animationProgressView.frame = CGRect(x: 0, y: 0, width: width, height: width)
+        animationProgressView.backgroundColor = .blue
+        animationProgressView.layer.cornerRadius = 10
+        animationProgressView.center = self.view.center
+        self.view.addSubview(animationProgressView)
+    }
 }
+
+
 
 extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30 // .count
+            return recipeModelArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        let recipeTitle = recipeModelArray[indexPath.row].title
-        
+        let recipe = recipeModelArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodTableViewCell", for: indexPath) as! FoodTableViewCell
+        cell.setRecipeData(recipe: recipe)
         
-//        cell.recipeTitle.text = recipeTitle
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedRecipe = recipeModelArray[indexPath.row]
-        delegate?.recipeSelected(selectedRecipe)
+//         when selected lell you must path to detail controller recipe id
+        let recipeId = recipeModelArray[indexPath.row]
+        delegate?.recipeSelected(recipeId)
         if
             let detailViewController = delegate as? DetailViewController,
             let detailNavigationController = detailViewController.navigationController {
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
-    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
 }
 
 extension FoodListViewController: UISearchBarDelegate {

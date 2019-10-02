@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B09A11E2344B54100008AE7 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09A11D2344B54100008AE7 /* LoadingAnimation.swift */; };
+		6B09A1202344BEC700008AE7 /* LoadImageFromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09A11F2344BEC700008AE7 /* LoadImageFromUrl.swift */; };
+		6B09A1222344C5BB00008AE7 /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09A1212344C5BB00008AE7 /* LoadImage.swift */; };
+		6B0BFF5B2343C89D009B07A2 /* PrimarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0BFF5A2343C89D009B07A2 /* PrimarySplitViewController.swift */; };
 		6B0D7AD62343310800B00609 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D7AD52343310800B00609 /* DetailViewController.swift */; };
 		6B0D7AD82343336200B00609 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D7AD72343336200B00609 /* FoodListViewController.swift */; };
 		6B0D7ADB234338D700B00609 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D7ADA234338D700B00609 /* APIManager.swift */; };
@@ -17,10 +21,15 @@
 		6B1C9E0223427A51006F90AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B1C9E0023427A51006F90AF /* LaunchScreen.storyboard */; };
 		6B1C9E0C23427ADC006F90AF /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1C9E0A23427ADC006F90AF /* FoodTableViewCell.swift */; };
 		6B1C9E0D23427ADC006F90AF /* FoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B1C9E0B23427ADC006F90AF /* FoodTableViewCell.xib */; };
+		6B23D6DD23448999001B57E5 /* BlurLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B23D6DC23448999001B57E5 /* BlurLoader.swift */; };
 		6B7A31F12343969700396399 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7A31F02343969700396399 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B09A11D2344B54100008AE7 /* LoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
+		6B09A11F2344BEC700008AE7 /* LoadImageFromUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageFromUrl.swift; sourceTree = "<group>"; };
+		6B09A1212344C5BB00008AE7 /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
+		6B0BFF5A2343C89D009B07A2 /* PrimarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySplitViewController.swift; sourceTree = "<group>"; };
 		6B0D7AD52343310800B00609 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6B0D7AD72343336200B00609 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
 		6B0D7ADA234338D700B00609 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -33,6 +42,7 @@
 		6B1C9E0323427A51006F90AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B1C9E0A23427ADC006F90AF /* FoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		6B1C9E0B23427ADC006F90AF /* FoodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTableViewCell.xib; sourceTree = "<group>"; };
+		6B23D6DC23448999001B57E5 /* BlurLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurLoader.swift; sourceTree = "<group>"; };
 		6B7A31F02343969700396399 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -85,8 +95,10 @@
 			isa = PBXGroup;
 			children = (
 				6B1C9DFB23427A50006F90AF /* Main.storyboard */,
+				6B0BFF5A2343C89D009B07A2 /* PrimarySplitViewController.swift */,
 				6B0D7AD72343336200B00609 /* FoodListViewController.swift */,
 				6B0D7AD52343310800B00609 /* DetailViewController.swift */,
+				6B23D6DA23448926001B57E5 /* Extention */,
 				6B0D7AD9234338AE00B00609 /* APIManager */,
 				6B0D7ADE2343460800B00609 /* Model */,
 				6B1C9E0923427AA7006F90AF /* FoodTableViewCell */,
@@ -105,6 +117,17 @@
 				6B1C9E0B23427ADC006F90AF /* FoodTableViewCell.xib */,
 			);
 			path = FoodTableViewCell;
+			sourceTree = "<group>";
+		};
+		6B23D6DA23448926001B57E5 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				6B23D6DC23448999001B57E5 /* BlurLoader.swift */,
+				6B09A11D2344B54100008AE7 /* LoadingAnimation.swift */,
+				6B09A11F2344BEC700008AE7 /* LoadImageFromUrl.swift */,
+				6B09A1212344C5BB00008AE7 /* LoadImage.swift */,
+			);
+			path = Extention;
 			sourceTree = "<group>";
 		};
 		6B7A31EF2343969700396399 /* Frameworks */ = {
@@ -188,10 +211,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B1C9DF823427A50006F90AF /* AppDelegate.swift in Sources */,
+				6B0BFF5B2343C89D009B07A2 /* PrimarySplitViewController.swift in Sources */,
 				6B1C9E0C23427ADC006F90AF /* FoodTableViewCell.swift in Sources */,
+				6B09A1202344BEC700008AE7 /* LoadImageFromUrl.swift in Sources */,
+				6B09A1222344C5BB00008AE7 /* LoadImage.swift in Sources */,
+				6B09A11E2344B54100008AE7 /* LoadingAnimation.swift in Sources */,
 				6B0D7ADB234338D700B00609 /* APIManager.swift in Sources */,
 				6B0D7ADD234341B300B00609 /* RecipeModel.swift in Sources */,
 				6B0D7AD82343336200B00609 /* FoodListViewController.swift in Sources */,
+				6B23D6DD23448999001B57E5 /* BlurLoader.swift in Sources */,
 				6B0D7AD62343310800B00609 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

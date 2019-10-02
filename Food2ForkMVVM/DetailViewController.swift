@@ -15,32 +15,45 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var webView: WKWebView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
     }
     
-    var recipe: Recipe? {
+    var recipe: RecipeModel? {
         didSet {
             refreshUI()
         }
     }
     private func refreshUI() {
-//        loadViewIfNeeded()
-//        monsterNameLabel.text = monster?.name
-//        monsterDescriptionLabel.text = monster?.description
-//        iconImageView.image = monster?.icon
-//        weaponImageView.image = monster?.weapon.image
-        print("UI refreshed")
+        
+        loadViewIfNeeded()
+        
+        // here need to send request with id and then fill in to VC
+        print(recipe?.recipe_id ?? "no id")
+        
+//        if let ingredients = recipe?.ingredients {
+//
+//            for r in ingredients {
+//                ingredientsLabel.text = " \(r) /n"
+//            }
+//        }
+//        if let url = URL(string: recipe?.recipe_url ?? "") {
+//            webView.load(URLRequest(url: url))
+//        }
+//        print("UI refreshed")
     }
-
+    
 }
 
 extension DetailViewController: SelectedRecipeDelegate {
-    func recipeSelected(_ newRecipe: RecipeModel) {
-        
-        print(newRecipe.title)
+    func recipeSelected(_ recipe: RecipeModel) {
+        self.recipe = recipe
     }
+    
+    
+ 
+    
+  
+
 }

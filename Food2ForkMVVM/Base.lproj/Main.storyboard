@@ -42,7 +42,7 @@
                                     <outlet property="delegate" destination="K08-AW-OwH" id="TDE-za-Pi9"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ASq-8H-xbA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ASq-8H-xbA">
                                 <rect key="frame" x="0.0" y="144" width="375" height="668"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="1393" y="-212"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Primary Split View Controller-->
         <scene sceneID="rij-Ip-jRT">
             <objects>
-                <splitViewController id="9BY-TI-xgC" sceneMemberID="viewController">
+                <splitViewController id="9BY-TI-xgC" customClass="PrimarySplitViewController" customModule="Food2ForkMVVM" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="bbr-Yg-ef3" kind="relationship" relationship="masterViewController" id="hW6-WY-C7x"/>
                         <segue destination="uQ4-ht-kHS" kind="relationship" relationship="detailViewController" id="cET-Kv-1yQ"/>

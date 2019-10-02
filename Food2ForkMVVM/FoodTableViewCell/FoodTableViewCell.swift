@@ -16,14 +16,26 @@ class FoodTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mainView.layer.cornerRadius = 5
+        
         recipeImage.layer.cornerRadius = 18
+        mainView.layer.cornerRadius = 7
+        recipeTitle.showBlurLoader()
+        recipeImage.showBlurLoader()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
+    }
+    func setRecipeData(recipe: RecipeModel)
+    {
+        self.recipeTitle.text = recipe.title
+        guard let url = URL(string: recipe.image_url ?? "") else { return }
+        recipeImage.load(url: url)
+        
+        recipeTitle.removeBluerLoader()
+        recipeImage.removeBluerLoader()
     }
     
 }

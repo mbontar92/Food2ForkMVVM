@@ -15,29 +15,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //
+                guard
+                    let splitViewController = window?.rootViewController as? UISplitViewController,
+                    let leftNavController = splitViewController.viewControllers.first
+                        as? UINavigationController,
+                    let foodListViewController = leftNavController.viewControllers.first
+                        as? FoodListViewController,
+                    let detailViewController =
+                    (splitViewController.viewControllers.last as? UINavigationController)?
+                        .topViewController as? DetailViewController
+                    else { fatalError() }
         
-        guard
-            let splitViewController = window?.rootViewController as? UISplitViewController,
-            let leftNavController = splitViewController.viewControllers.first
-                as? UINavigationController,
-            let foodListViewController = leftNavController.viewControllers.first
-                as? FoodListViewController,
-            let detailViewController =
-            (splitViewController.viewControllers.last as? UINavigationController)?
-                .topViewController as? DetailViewController
-            else { fatalError() }
+//                let firstView = foodListViewController.recipeModel
+//                detailViewController.recipe = firstView
+                // delegate
+                foodListViewController.delegate = detailViewController
         
-        let firstView = foodListViewController.recipeModel
-        detailViewController.recipe = firstView
-        
-        //        // delegate
-        foodListViewController.delegate = detailViewController
-        
-        // back buttons to IPAD
-        detailViewController.navigationItem.leftItemsSupplementBackButton = true
-        detailViewController.navigationItem.leftBarButtonItem =
-            splitViewController.displayModeButtonItem
-        
+                // back buttons to IPAD
+                detailViewController.navigationItem.leftItemsSupplementBackButton = true
+                detailViewController.navigationItem.leftBarButtonItem =
+                    splitViewController.displayModeButtonItem
         return true
     }
 
