@@ -1,29 +1,12 @@
 //
-//  ShadowToCell.swift
+//  BlurLoader.swift
 //  Food2ForkMVVM
 //
-//  Created by Lorem on 10/2/19.
+//  Created by Lorem on 10/3/19.
 //  Copyright © 2019 Bontar Mykhailo. All rights reserved.
 //
 
-import Foundation
 import UIKit
-
-extension UIView {
-    func showBlurLoader() {
-        
-        // FIX width !!!
-        let blurLoader = BlurLoader(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height ))
-        self.addSubview(blurLoader)
-    }
-    
-    func removeBluerLoader() {
-        if let blurLoader = subviews.first(where: { $0 is BlurLoader }) {
-            blurLoader.removeFromSuperview()
-        }
-    }
-}
-
 
 class BlurLoader: UIView {
     
@@ -37,7 +20,7 @@ class BlurLoader: UIView {
         self.blurEffectView = blurEffectView
         super.init(frame: frame)
         addSubview(blurEffectView)
-//        addLoader()
+        //        addLoader()
     }
     
     required init?(coder aDecoder: NSCoder) {

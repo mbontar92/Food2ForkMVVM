@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Decodable
 struct RecipeArray: Decodable {
     var recipes: [RecipeModel]?
 }
@@ -17,7 +18,6 @@ struct Recipe: Decodable {
 }
 
 struct RecipeModel: Decodable {
-    
     var publisher: String?
     var f2f_url: String?
     var title: String?

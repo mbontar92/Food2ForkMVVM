@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    func downloadImage(imageStringUrl: String?){
-        
+    func downloadImage(imageStringUrl: String?) {
         if let imageUrl = imageStringUrl {
             if let url = URL(string: imageUrl) {
                 let request = URLRequest(url: url)
@@ -32,3 +31,4 @@ extension UIImageView {
         }
     }
 }
+
