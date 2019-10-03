@@ -31,9 +31,7 @@ class FoodTableViewCell: UITableViewCell {
     func setRecipeData(recipe: RecipeModel)
     {
         self.recipeTitle.text = recipe.title
-        guard let url = URL(string: recipe.image_url ?? "") else { return }
-        recipeImage.load(url: url)
-        
+        recipeImage.downloadImage(imageStringUrl: recipe.image_url)
         recipeTitle.removeBluerLoader()
         recipeImage.removeBluerLoader()
     }

@@ -32,16 +32,15 @@ class DetailViewController: UIViewController {
         // here need to send request with id and then fill in to VC
         print(recipe?.recipe_id ?? "no id")
         
-//        if let ingredients = recipe?.ingredients {
-//
-//            for r in ingredients {
-//                ingredientsLabel.text = " \(r) /n"
-//            }
-//        }
-//        if let url = URL(string: recipe?.recipe_url ?? "") {
-//            webView.load(URLRequest(url: url))
-//        }
-//        print("UI refreshed")
+        if let ingredients = recipe?.ingredients {
+
+            for r in ingredients {
+                ingredientsLabel.text = " \(r) /n"
+            }
+        }
+        if let url = URL(string: recipe?.recipe_url ?? "") {
+            webView.load(URLRequest(url: url))
+        }
     }
     
 }

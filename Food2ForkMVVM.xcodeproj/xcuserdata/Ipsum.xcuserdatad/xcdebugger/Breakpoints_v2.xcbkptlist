@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Food2ForkMVVM/DetailViewController.swift"
-            timestampString = "591715113.678515"
+            filePath = "Food2ForkMVVM/AllertViewController.swift"
+            timestampString = "591783698.276207"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "refreshUI()"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "didTap(withGestureRecognizer:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Food2ForkMVVM/AllertViewController.swift"
+            timestampString = "591783698.276338"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "okButtonDidPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

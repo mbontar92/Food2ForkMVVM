@@ -19,16 +19,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7y-2A-4AP">
-                        <rect key="frame" x="16" y="16" width="374" height="87.5"/>
+                        <rect key="frame" x="40" y="16" width="334" height="87.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="234" verticalHuggingPriority="251" text="recipe title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPP-D4-90W">
-                                <rect key="frame" x="89" y="6.5" width="277" height="75"/>
+                                <rect key="frame" x="53" y="6.5" width="273" height="75"/>
                                 <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="618183eac9" translatesAutoresizingMaskIntoConstraints="NO" id="Ed1-BF-ytY">
-                                <rect key="frame" x="6" y="6.5" width="75" height="75"/>
+                                <rect key="frame" x="-30" y="6.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="j3s-UX-YIb"/>
                                     <constraint firstAttribute="width" constant="75" id="lWM-dC-xBQ"/>
@@ -42,15 +42,15 @@
                             <constraint firstItem="jPP-D4-90W" firstAttribute="centerY" secondItem="Ed1-BF-ytY" secondAttribute="centerY" id="6yJ-kk-sgJ"/>
                             <constraint firstItem="jPP-D4-90W" firstAttribute="bottom" secondItem="Ed1-BF-ytY" secondAttribute="bottom" id="99r-q0-onZ"/>
                             <constraint firstItem="jPP-D4-90W" firstAttribute="top" secondItem="Ed1-BF-ytY" secondAttribute="top" id="Ekf-HN-qnp"/>
-                            <constraint firstItem="Ed1-BF-ytY" firstAttribute="leading" secondItem="x7y-2A-4AP" secondAttribute="leading" constant="6" id="uh8-8z-hFq"/>
+                            <constraint firstItem="Ed1-BF-ytY" firstAttribute="leading" secondItem="x7y-2A-4AP" secondAttribute="leading" constant="-30" id="uh8-8z-hFq"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="x7y-2A-4AP" secondAttribute="trailing" constant="24" id="5Yc-u1-YTP"/>
+                    <constraint firstAttribute="trailing" secondItem="x7y-2A-4AP" secondAttribute="trailing" constant="40" id="5Yc-u1-YTP"/>
                     <constraint firstItem="Ed1-BF-ytY" firstAttribute="centerY" secondItem="2QD-0Z-LJN" secondAttribute="centerY" id="PIf-wT-CVx"/>
-                    <constraint firstItem="x7y-2A-4AP" firstAttribute="leading" secondItem="2QD-0Z-LJN" secondAttribute="leading" constant="16" id="VMY-Ed-BSO"/>
+                    <constraint firstItem="x7y-2A-4AP" firstAttribute="leading" secondItem="2QD-0Z-LJN" secondAttribute="leading" constant="40" id="VMY-Ed-BSO"/>
                     <constraint firstAttribute="bottom" secondItem="x7y-2A-4AP" secondAttribute="bottom" constant="16" id="ZY4-Xc-kpa"/>
                     <constraint firstItem="x7y-2A-4AP" firstAttribute="top" secondItem="2QD-0Z-LJN" secondAttribute="top" constant="16" id="zLt-gd-hwg"/>
                 </constraints>
