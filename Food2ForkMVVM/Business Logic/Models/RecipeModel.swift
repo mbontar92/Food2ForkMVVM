@@ -6,18 +6,17 @@
 //  Copyright © 2019 Bontar Mykhailo. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-// Decodable
-struct RecipeArray: Decodable {
+struct RecipeArray: Codable {
     var recipes: [RecipeModel]?
 }
 
-struct Recipe: Decodable {
+struct Recipe: Codable {
      var recipe: RecipeModel?
 }
 
-struct RecipeModel: Decodable {
+struct RecipeModel: Codable {
     var publisher: String?
     var f2f_url: String?
     var title: String?

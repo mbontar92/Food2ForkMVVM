@@ -9,74 +9,68 @@
 import UIKit
 import WebKit
 
-class FoodDetailsViewController: UIViewController {
+final class FoodDetailsViewController: UIViewController {
     
-    @IBOutlet weak var recipeImage: UIImageView!
-    @IBOutlet weak var ingredientsLabel: UILabel!
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet private var recipeImageView: UIImageView!
+    @IBOutlet private var ingredientsLabel: UILabel!
+    @IBOutlet private var webView: WKWebView!
+    
+    var viewModel: ViewModel? {
+        didSet {
+            setUpViewModel()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshUI()
     }
-    
-    var viewModel: ViewModel?
-    
-    var recipeModel: RecipeModel? {
-        didSet {
-            APIManager.sharedInstance.getRecipesDetailRequest(id: recipeModel?.recipe_id ?? "") { (recipe) in
-                self.recipe = recipe
-            }
+
+    func setUpViewModel() {
+        viewModel?.shouldReloadContent = { [weak self] in
+            self?.refreshUI()
         }
-    }
-    
-    var recipe : Recipe? {
-        didSet {
-            refreshUI()
+        
+        viewModel?.shouldDisplayImage = { [weak self] image in
+            self?.recipeImageView.image = image
         }
+        
+        viewModel?.startLoadingData()
     }
-    
+        
     private func refreshUI() {
+        guard let recipe = viewModel?.recipe?.recipe else {
+            showEmptyView()
+            return
+        }
         
-        loadViewIfNeeded()
-        
-        recipeImage.downloadImage(imageStringUrl: recipe?.recipe?.image_url)
-        if let ingredientsArray = recipe?.recipe?.ingredients {
-            var ingridients = ""
-            for r in ingredientsArray {
-                ingridients += "\(r) \n"
-            }
-            DispatchQueue.main.async {
-                self.ingredientsLabel.text = ingridients
-            }
-            guard let recipeUrl = recipe?.recipe?.source_url  else  { return }
-            guard let link = URL(string: recipeUrl ) else { return }
+        hideEmptyView()
+                
+//        loadViewIfNeeded()
+
+        if let ingredientsArray = recipe.ingredients {
+//            var ingridients = ""
+//            for r in ingredientsArray {
+//                ingridients += "\(r) \n"
+//            }
+//
+            let ingredients = ingredientsArray.reduce("") { $0 + "\($1) \n" }
+            
+            self.ingredientsLabel.text = ingredients
+            guard let recipeUrl = recipe.source_url, let link = URL(string: recipeUrl) else { return }
+            
             let request = URLRequest(url: link)
-            DispatchQueue.main.async {
-                self.webView.load(request)
-            }
+            self.webView.load(request)
         }
     }
     
-}
-extension FoodDetailsViewController: SelectedRecipeDelegate {
-    func recipeSelected(_ recipe: RecipeModel) {
-        self.recipeModel = recipe
+    private func showEmptyView() {
+        
     }
-}
-
-
- 
     
-  
-
-extension FoodDetailsViewController {
-    class ViewModel {
+    private func hideEmptyView() {
         
-        let recipeId: String
-        
-        init(recipeId: String) {
-            self.recipeId = recipeId
-        }
     }
 }
+

@@ -21,20 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 as? UINavigationController,
             let foodListViewController = leftNavController.viewControllers.first
                 as? FoodListViewController,
-            let detailViewController =
+            let detailFoodViewController =
             (splitViewController.viewControllers.last as? UINavigationController)?
                 .topViewController as? FoodDetailsViewController
             else { fatalError() }
-        
-//        let firstView = foodListViewController.recipeModel
-//        detailViewController.recipe = firstView
-        // delegate
-        foodListViewController.delegate = detailViewController
-        
+
+        foodListViewController.viewModel = FoodListViewController.ViewModel()
+                
         // back buttons to IPAD
-        detailViewController.navigationItem.leftItemsSupplementBackButton = true
-        detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        detailFoodViewController.navigationItem.leftItemsSupplementBackButton = true
+        detailFoodViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        
         return true
+        
     }
 }
-

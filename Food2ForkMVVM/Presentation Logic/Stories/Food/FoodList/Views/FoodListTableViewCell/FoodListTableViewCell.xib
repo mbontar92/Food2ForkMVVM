@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FoodListTableViewCell" rowHeight="120" id="lPB-fv-Zyh" customClass="FoodListTableViewCell" customModule="Food2ForkMVVM" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FoodListTableViewCell" rowHeight="146" id="lPB-fv-Zyh" customClass="FoodListTableViewCell" customModule="Food2ForkMVVM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="146"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lPB-fv-Zyh" id="2QD-0Z-LJN">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="146"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7y-2A-4AP">
-                        <rect key="frame" x="40" y="16" width="334" height="87.5"/>
+                        <rect key="frame" x="40" y="16" width="334" height="95"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="234" verticalHuggingPriority="251" text="recipe title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPP-D4-90W">
-                                <rect key="frame" x="53" y="6.5" width="273" height="75"/>
+                                <rect key="frame" x="53" y="5" width="273" height="85"/>
                                 <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="618183eac9" translatesAutoresizingMaskIntoConstraints="NO" id="Ed1-BF-ytY">
-                                <rect key="frame" x="-30" y="6.5" width="75" height="75"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="618183eac9" translatesAutoresizingMaskIntoConstraints="NO" id="Ed1-BF-ytY">
+                                <rect key="frame" x="-30" y="10" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="j3s-UX-YIb"/>
                                     <constraint firstAttribute="width" constant="75" id="lWM-dC-xBQ"/>
@@ -39,17 +37,18 @@
                         <constraints>
                             <constraint firstItem="jPP-D4-90W" firstAttribute="leading" secondItem="Ed1-BF-ytY" secondAttribute="trailing" constant="8" id="3DK-Vw-Lbo"/>
                             <constraint firstAttribute="trailing" secondItem="jPP-D4-90W" secondAttribute="trailing" constant="8" id="6Iy-Lf-DNb"/>
-                            <constraint firstItem="jPP-D4-90W" firstAttribute="centerY" secondItem="Ed1-BF-ytY" secondAttribute="centerY" id="6yJ-kk-sgJ"/>
-                            <constraint firstItem="jPP-D4-90W" firstAttribute="bottom" secondItem="Ed1-BF-ytY" secondAttribute="bottom" id="99r-q0-onZ"/>
-                            <constraint firstItem="jPP-D4-90W" firstAttribute="top" secondItem="Ed1-BF-ytY" secondAttribute="top" id="Ekf-HN-qnp"/>
+                            <constraint firstAttribute="bottom" secondItem="Ed1-BF-ytY" secondAttribute="bottom" constant="10" id="7Ay-6d-471"/>
+                            <constraint firstItem="Ed1-BF-ytY" firstAttribute="centerY" secondItem="x7y-2A-4AP" secondAttribute="centerY" id="Ds9-em-oNs"/>
+                            <constraint firstAttribute="bottom" secondItem="jPP-D4-90W" secondAttribute="bottom" constant="5" id="K7H-ag-0iT"/>
+                            <constraint firstItem="Ed1-BF-ytY" firstAttribute="top" secondItem="x7y-2A-4AP" secondAttribute="top" constant="10" id="Ya4-od-hPB"/>
                             <constraint firstItem="Ed1-BF-ytY" firstAttribute="leading" secondItem="x7y-2A-4AP" secondAttribute="leading" constant="-30" id="uh8-8z-hFq"/>
+                            <constraint firstItem="jPP-D4-90W" firstAttribute="top" secondItem="x7y-2A-4AP" secondAttribute="top" constant="5" id="zwN-1j-BXp"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="x7y-2A-4AP" secondAttribute="trailing" constant="40" id="5Yc-u1-YTP"/>
-                    <constraint firstItem="Ed1-BF-ytY" firstAttribute="centerY" secondItem="2QD-0Z-LJN" secondAttribute="centerY" id="PIf-wT-CVx"/>
                     <constraint firstItem="x7y-2A-4AP" firstAttribute="leading" secondItem="2QD-0Z-LJN" secondAttribute="leading" constant="40" id="VMY-Ed-BSO"/>
                     <constraint firstAttribute="bottom" secondItem="x7y-2A-4AP" secondAttribute="bottom" constant="16" id="ZY4-Xc-kpa"/>
                     <constraint firstItem="x7y-2A-4AP" firstAttribute="top" secondItem="2QD-0Z-LJN" secondAttribute="top" constant="16" id="zLt-gd-hwg"/>
@@ -58,10 +57,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="mainView" destination="x7y-2A-4AP" id="vdL-sa-Tkg"/>
-                <outlet property="recipeImage" destination="Ed1-BF-ytY" id="gQq-pO-rlq"/>
-                <outlet property="recipeTitle" destination="jPP-D4-90W" id="1kj-aH-UPa"/>
+                <outlet property="recipeImageView" destination="Ed1-BF-ytY" id="vSg-3U-N7T"/>
+                <outlet property="recipeTitleLabel" destination="jPP-D4-90W" id="Hlk-3g-yUj"/>
             </connections>
-            <point key="canvasLocation" x="115.94202898550725" y="96.428571428571431"/>
+            <point key="canvasLocation" x="115.94202898550725" y="103.79464285714285"/>
         </tableViewCell>
     </objects>
     <resources>

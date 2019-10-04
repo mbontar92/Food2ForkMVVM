@@ -6,14 +6,12 @@
 //  Copyright © 2019 Bontar Mykhailo. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
 extension UIView {
     
     func showBlurLoader() {
-        
-        // FIX width !!!
         let blurLoader = BlurLoader(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height ))
         self.addSubview(blurLoader)
     }

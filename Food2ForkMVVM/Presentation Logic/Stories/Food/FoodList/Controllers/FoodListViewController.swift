@@ -12,6 +12,7 @@ protocol SelectedRecipeDelegate: class {
     func recipeSelected(_ recipe: RecipeModel)
 }
 
+// classes marked with final can not be overridden.
 final class FoodListViewController: UIViewController {
     
     // MARK: IBOutlets
@@ -74,13 +75,15 @@ private extension FoodListViewController {
     }
     
     func hideEmptyStateAlert() {
-        allertViewBottomConstraint.constant = 0.0
-        UIView.animate(withDuration: 0.3) {
+        allertViewBottomConstraint.constant = -view.frame.height / 3
+        UIView.animate(withDuration: 0.4) {
             self.view.layoutIfNeeded()
         }
     }
     
     func setupViewModel() {
+        viewModel?.startLoadingData()
+        
         viewModel?.shouldReloadContent = { [weak self] in
             self?.tableView.reloadData()
         }
@@ -116,7 +119,7 @@ extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.didSelectItem(index: indexPath.row)
+        viewModel?.didSelectItem(index: indexPath.row)        
     }
 }
 
@@ -125,7 +128,7 @@ extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
 extension FoodListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         typingTimer?.invalidate()
-        
+
         typingTimer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: true, block: { [weak self] _ in
             self?.viewModel?.didSearch(query: searchText)
             self?.typingTimer?.invalidate()
@@ -141,19 +144,16 @@ extension FoodListViewController: UISearchBarDelegate {
 
 private extension FoodListViewController {
     func showRecipeDetails(recipe: RecipeModel) {
-//                delegate?.recipeSelected(recipe)
-//                if
-//                    let detailViewController = delegate as? FoodDetailsViewController,
-//                    let detailNavigationController = detailViewController.navigationController {
-//                    splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
-//                }
-        guard let detailsController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: FoodDetailsViewController.self)) as? FoodDetailsViewController else { return }
-        
-        let detailsViewModel = FoodDetailsViewController.ViewModel(recipeId: recipe.recipe_id ?? "")
-        detailsController.viewModel = detailsViewModel
-        
-        if let navigationController = detailsController.navigationController {
-            splitViewController?.showDetailViewController(navigationController, sender: nil)
+        if let navigationController = splitViewController?.viewControllers.last as? UINavigationController, let detailsController = navigationController.viewControllers.first as? FoodDetailsViewController {
+            let detailsViewModel = FoodDetailsViewController.ViewModel(recipeId: recipe.recipe_id ?? "")
+            detailsController.viewModel = detailsViewModel
+            
+        } else if let detailsController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: FoodDetailsViewController.self)) as? FoodDetailsViewController {
+            
+            let detailsViewModel = FoodDetailsViewController.ViewModel(recipeId: recipe.recipe_id ?? "")
+            detailsController.viewModel = detailsViewModel
+            
+            splitViewController?.showDetailViewController(UINavigationController(rootViewController: detailsController), sender: nil)
         }
     }
 }

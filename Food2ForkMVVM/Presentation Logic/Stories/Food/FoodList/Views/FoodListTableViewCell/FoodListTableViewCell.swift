@@ -25,9 +25,17 @@ final class FoodListTableViewCell: UITableViewCell {
         
         setupView()
     }
+        
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        recipeImageView.layer.cornerRadius = 18
+        mainView.layer.cornerRadius = 7
+    }
 }
 
 private extension FoodListTableViewCell {
+    
     func setupViewModel() {
         guard let viewModel = viewModel else { return }
         
@@ -37,14 +45,13 @@ private extension FoodListTableViewCell {
         viewModel.shouldShowImage = { [weak self] image in
             self?.recipeImageView.image = image
         }
-
-        recipeTitleLabel.removeBluerLoader()
-        recipeImageView.removeBluerLoader()
+        UIView.animate(withDuration: 0.7) {
+            self.recipeTitleLabel.removeBluerLoader()
+            self.recipeImageView.removeBluerLoader()
+        }
     }
     
     func setupView() {
-        recipeImageView.layer.cornerRadius = 18
-        mainView.layer.cornerRadius = 7
         recipeTitleLabel.showBlurLoader()
         recipeImageView.showBlurLoader()
     }

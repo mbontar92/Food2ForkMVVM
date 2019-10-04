@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 extension FoodListViewController {
     class ViewModel {
         
@@ -24,6 +25,10 @@ extension FoodListViewController {
         var shouldShowEmptyState: (()->Void)?
         
         var shouldShowRecipeDetails: ((RecipeModel)->Void)?
+        
+        func startLoadingData() {
+            getSearchResults(query: "")
+        }
         
         func didSelectItem(index: Int) {
             shouldShowRecipeDetails?(recipesDataSource[index])
