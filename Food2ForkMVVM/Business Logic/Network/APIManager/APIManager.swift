@@ -14,7 +14,8 @@ class APIManager {
     static let sharedInstance = APIManager()
     
     var baseUrl = "https://www.food2fork.com/api/"
-    var key = "1a73adfdd5c60df126eb811a6a4b450e"
+//    var key = "1a73adfdd5c60df126eb811a6a4b450e" // my
+    var key = "312aa7177ab5751bdcd416f1a06d461d" // second
     var query = ""
     var page = "1"
     var id = ""

@@ -14,7 +14,7 @@ class PrimarySplitViewController: UISplitViewController {
         super.viewDidLoad()
         
         self.delegate = self
-        self.preferredDisplayMode = .primaryOverlay
+        self.preferredDisplayMode = .automatic
     }
 }
 

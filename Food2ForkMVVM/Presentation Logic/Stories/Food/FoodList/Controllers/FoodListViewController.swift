@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol SelectedRecipeDelegate: class {
-    func recipeSelected(_ recipe: RecipeModel)
-}
+//protocol SelectedRecipeDelegate: class {
+//    func recipeSelected(_ recipe: RecipeModel)
+//}
 
 // classes marked with final can not be overridden.
 final class FoodListViewController: UIViewController {
@@ -26,7 +26,7 @@ final class FoodListViewController: UIViewController {
     
     var viewModel: ViewModel?
     
-    weak var delegate: SelectedRecipeDelegate?
+//    weak var delegate: SelectedRecipeDelegate?
     
     private var typingTimer: Timer?
     
@@ -68,14 +68,14 @@ private extension FoodListViewController {
     }
     
     func showEmptyStateAlert() {
-        allertViewBottomConstraint.constant = view.frame.height / 3
+        allertViewBottomConstraint.constant = -view.frame.height / 3
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
     
     func hideEmptyStateAlert() {
-        allertViewBottomConstraint.constant = -view.frame.height / 3
+        allertViewBottomConstraint.constant = view.frame.height / 3
         UIView.animate(withDuration: 0.4) {
             self.view.layoutIfNeeded()
         }
@@ -102,7 +102,7 @@ private extension FoodListViewController {
 
 extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if viewModel?.shouldShowBluredContent ?? true { return 20 }
+        if viewModel?.isInitialFetchRequest ?? true { return 30 }
     
         return viewModel?.cellViewModelsDataSource.count ?? 0
     }
@@ -110,7 +110,7 @@ extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FoodListTableViewCell.self), for: indexPath) as? FoodListTableViewCell else { return UITableViewCell() }
         
-        if !(viewModel?.shouldShowBluredContent ?? true) {
+        if !(viewModel?.isInitialFetchRequest ?? true) {
             let cellViewModel = viewModel?.cellViewModelsDataSource[indexPath.row]
             cell.viewModel = cellViewModel
         }
@@ -147,11 +147,13 @@ private extension FoodListViewController {
         if let navigationController = splitViewController?.viewControllers.last as? UINavigationController, let detailsController = navigationController.viewControllers.first as? FoodDetailsViewController {
             let detailsViewModel = FoodDetailsViewController.ViewModel(recipeId: recipe.recipe_id ?? "")
             detailsController.viewModel = detailsViewModel
+            detailsController.viewModel?.showEmptyViewBool = false
             
         } else if let detailsController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: FoodDetailsViewController.self)) as? FoodDetailsViewController {
             
             let detailsViewModel = FoodDetailsViewController.ViewModel(recipeId: recipe.recipe_id ?? "")
             detailsController.viewModel = detailsViewModel
+
             
             splitViewController?.showDetailViewController(UINavigationController(rootViewController: detailsController), sender: nil)
         }

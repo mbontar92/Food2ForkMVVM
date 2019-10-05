@@ -28,6 +28,8 @@ extension FoodDetailsViewController {
         
         var shouldDisplayImage: ((UIImage)->Void)?
         
+        var showEmptyViewBool: Bool = true
+        
         func startLoadingData() {
             getDetailResults(id: recipeId)
         }

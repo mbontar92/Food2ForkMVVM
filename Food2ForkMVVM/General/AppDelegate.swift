@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         detailFoodViewController.navigationItem.leftItemsSupplementBackButton = true
         detailFoodViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         
+        
+        
         return true
         
     }
