@@ -8,24 +8,44 @@
 
 import UIKit
 
-struct RecipeArray: Codable {
-    var recipes: [RecipeModel]?
+//struct RecipeArray: Codable {
+//    var recipes: [RecipeModel]?
+//}
+//
+//struct Recipe: Codable {
+//     var recipe: RecipeModel?
+//}
+//
+//struct RecipeModel: Codable {
+//    var publisher: String?
+//    var f2f_url: String?
+//    var title: String?
+//    var source_url: String?
+//    var recipe_url: String?
+//    var recipe_id: String?
+//    var image_url: String?
+//    var social_rank: Float?
+//    var publisher_url: String?
+//    var ingredients: [String]?
+//}
+
+struct RecipeSearchResponse: Codable {
+    var recipes: [Recipe]?
+}
+
+struct RecipeDetailsRepsonse: Codable {
+    var recipe: Recipe?
 }
 
 struct Recipe: Codable {
-     var recipe: RecipeModel?
-}
-
-struct RecipeModel: Codable {
-    var publisher: String?
-    var f2f_url: String?
     var title: String?
-    var source_url: String?
-    var recipe_url: String?
     var recipe_id: String?
-    var image_url: String?
-    var social_rank: Float?
+    var publisher: String?
     var publisher_url: String?
+    var f2f_url: String?
+    var source_url: String?
+    var social_rank: Float?
+    var image_url : String?
     var ingredients: [String]?
 }
 

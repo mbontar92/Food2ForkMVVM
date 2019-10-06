@@ -49,7 +49,7 @@ final class FoodDetailsViewController: UIViewController {
     }
         
     private func refreshUI() {
-        guard let recipe = viewModel?.recipe?.recipe else {
+        guard let recipe = viewModel?.recipe else {
             return
         }
         

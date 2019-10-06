@@ -46,7 +46,7 @@ extension FoodDetailsViewController {
             APIManager.sharedInstance.getRecipesDetailRequest(id: id) { [weak self] response in
                 DispatchQueue.main.async {
                     if let recipe = response {
-                        self?.recipe = recipe
+                        self?.recipe = recipe.recipe
                         self?.shouldReloadContent?()
                     }
                 }
@@ -54,7 +54,7 @@ extension FoodDetailsViewController {
         }
         
         private func downloadRecipeImage() {
-            ImageDownloader.download(url: recipe?.recipe?.image_url) { [weak self] result in
+            ImageDownloader.download(url: recipe?.image_url) { [weak self] result in
                 if let image = result {
                     DispatchQueue.main.async {
                         self?.shouldDisplayImage?(image)

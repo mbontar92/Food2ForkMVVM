@@ -12,7 +12,7 @@ import UIKit
 extension FoodListViewController {
     class ViewModel {
         
-        private var recipesDataSource: [RecipeModel] = []
+        private var recipesDataSource: [Recipe] = []
         
         private(set) var cellViewModelsDataSource: [FoodListTableViewCell.ViewModel] = []
         
@@ -24,15 +24,16 @@ extension FoodListViewController {
         
         var shouldShowEmptyState: (()->Void)?
         
-        var shouldShowRecipeDetails: ((RecipeModel)->Void)?
+        var shouldShowRecipeDetails: ((Recipe)->Void)?
         
         func startLoadingData() {
             getSearchResults(query: "")
-            isInitialFetchRequest = false
         }
         
         func didSelectItem(index: Int) {
-            shouldShowRecipeDetails?(recipesDataSource[index])
+            if recipesDataSource.count > 0 {
+                shouldShowRecipeDetails?(recipesDataSource[index])
+            }
         }
         
         func didSearch(query: String) {
@@ -44,6 +45,7 @@ extension FoodListViewController {
         private func getSearchResults(query: String) {
             APIManager.sharedInstance.getRecipesListRequest(query: query, page: "1") { [weak self] response in
                 DispatchQueue.main.async {
+                    self?.isInitialFetchRequest = false
                     var isEmptyResponse = true
                     if let result = response, let recipes = result.recipes, !recipes.isEmpty {
                         isEmptyResponse = false
@@ -54,6 +56,8 @@ extension FoodListViewController {
                             let viewModel = FoodListTableViewCell.ViewModel(recipe: recipe)
                             self?.cellViewModelsDataSource.append(viewModel)
                         }
+                    } else {
+                         self?.cellViewModelsDataSource.removeAll()
                     }
                     
                     self?.shouldReloadContent?()

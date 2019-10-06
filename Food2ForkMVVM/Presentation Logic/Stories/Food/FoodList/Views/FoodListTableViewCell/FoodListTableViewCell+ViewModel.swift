@@ -12,7 +12,7 @@ extension FoodListTableViewCell {
     
     class ViewModel {
         
-        private let recipe: RecipeModel
+        private let recipe: Recipe
         
         var title: String? {
             return recipe.title
@@ -22,7 +22,7 @@ extension FoodListTableViewCell {
         
         var shouldShowImage: ((UIImage) -> Void)?
         
-        init(recipe: RecipeModel) {
+        init(recipe: Recipe) {
             self.recipe = recipe
             
             downloadRecipeImage()

@@ -119,7 +119,8 @@ extension FoodListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.didSelectItem(index: indexPath.row)        
+        viewModel?.didSelectItem(index: indexPath.row)
+        
     }
 }
 
@@ -143,11 +144,13 @@ extension FoodListViewController: UISearchBarDelegate {
 // MARK: - Screen presentation
 
 private extension FoodListViewController {
-    func showRecipeDetails(recipe: RecipeModel) {
+    func showRecipeDetails(recipe: Recipe) {
         if let navigationController = splitViewController?.viewControllers.last as? UINavigationController, let detailsController = navigationController.viewControllers.first as? FoodDetailsViewController {
             let detailsViewModel = FoodDetailsViewController.ViewModel(recipeId: recipe.recipe_id ?? "")
             detailsController.viewModel = detailsViewModel
-            detailsController.viewModel?.showEmptyViewBool = false
+            
+            
+             detailsController.viewModel?.showEmptyViewBool = false
             
         } else if let detailsController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: FoodDetailsViewController.self)) as? FoodDetailsViewController {
             
