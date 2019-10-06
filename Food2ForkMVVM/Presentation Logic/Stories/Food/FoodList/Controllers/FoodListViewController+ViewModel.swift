@@ -12,6 +12,8 @@ import UIKit
 extension FoodListViewController {
     class ViewModel {
         
+         // MARK: Private
+        
         private var recipesDataSource: [Recipe] = []
         
         private(set) var cellViewModelsDataSource: [FoodListTableViewCell.ViewModel] = []
@@ -42,28 +44,35 @@ extension FoodListViewController {
         
         // MARK: API calls
         
-        private func getSearchResults(query: String) {
+      private func getSearchResults(query: String) {
             APIManager.sharedInstance.getRecipesListRequest(query: query, page: "1") { [weak self] response in
                 DispatchQueue.main.async {
-                    self?.isInitialFetchRequest = false
-                    var isEmptyResponse = true
-                    if let result = response, let recipes = result.recipes, !recipes.isEmpty {
-                        isEmptyResponse = false
-                        self?.recipesDataSource = recipes
-                        
-                        self?.cellViewModelsDataSource.removeAll()
-                        for recipe in recipes {
-                            let viewModel = FoodListTableViewCell.ViewModel(recipe: recipe)
-                            self?.cellViewModelsDataSource.append(viewModel)
+                    switch response {
+                    case .success(let response):
+                        self?.isInitialFetchRequest = false
+                        var isEmptyResponse = true
+                        if let recipes = response.recipes, !recipes.isEmpty {
+                            isEmptyResponse = false
+                            self?.recipesDataSource = recipes
+                            
+                            self?.cellViewModelsDataSource.removeAll()
+                            for recipe in recipes {
+                                let viewModel = FoodListTableViewCell.ViewModel(recipe: recipe)
+                                self?.cellViewModelsDataSource.append(viewModel)
+                            }
+                        } else {
+                            self?.cellViewModelsDataSource.removeAll()
                         }
-                    } else {
-                         self?.cellViewModelsDataSource.removeAll()
-                    }
-                    
-                    self?.shouldReloadContent?()
-                    
-                    if isEmptyResponse {
-                        self?.shouldShowEmptyState?()
+                        
+                        self?.shouldReloadContent?()
+                        
+                        if isEmptyResponse {
+                            self?.shouldShowEmptyState?()
+                        }
+                        
+                    case .failure(let error):
+                        print(error)
+                        break
                     }
                 }
             }

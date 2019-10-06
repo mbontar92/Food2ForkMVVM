@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B09A11E2344B54100008AE7 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09A11D2344B54100008AE7 /* LoadingAnimation.swift */; };
 		6B0BFF5B2343C89D009B07A2 /* PrimarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0BFF5A2343C89D009B07A2 /* PrimarySplitViewController.swift */; };
 		6B0D7AD62343310800B00609 /* FoodDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D7AD52343310800B00609 /* FoodDetailsViewController.swift */; };
 		6B0D7AD82343336200B00609 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D7AD72343336200B00609 /* FoodListViewController.swift */; };
@@ -29,7 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6B09A11D2344B54100008AE7 /* LoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		6B0BFF5A2343C89D009B07A2 /* PrimarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySplitViewController.swift; sourceTree = "<group>"; };
 		6B0D7AD52343310800B00609 /* FoodDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsViewController.swift; sourceTree = "<group>"; };
 		6B0D7AD72343336200B00609 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
@@ -216,18 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				6BAA4696234636D300D4156A /* Views */,
-				6BB4E294234633DF00AF6341 /* Helpers */,
 				6B23D6DA23448926001B57E5 /* Extensions */,
 			);
 			path = General;
-			sourceTree = "<group>";
-		};
-		6BB4E294234633DF00AF6341 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				6B09A11D2344B54100008AE7 /* LoadingAnimation.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		6BB4E2952346340300AF6341 /* Food */ = {
@@ -354,7 +343,6 @@
 				6B2D12F923472DBF009C5117 /* FoodDetailsViewController+ViewModel.swift in Sources */,
 				6BAA469A23463B3B00D4156A /* FoodListTableViewCell+ViewModel.swift in Sources */,
 				6B1C9E0C23427ADC006F90AF /* FoodListTableViewCell.swift in Sources */,
-				6B09A11E2344B54100008AE7 /* LoadingAnimation.swift in Sources */,
 				6B0D7ADB234338D700B00609 /* APIManager.swift in Sources */,
 				6B0D7ADD234341B300B00609 /* RecipeModel.swift in Sources */,
 				6BAA4698234636DE00D4156A /* BlurLoader.swift in Sources */,

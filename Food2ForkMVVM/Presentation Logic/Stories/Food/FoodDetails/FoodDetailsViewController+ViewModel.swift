@@ -45,9 +45,14 @@ extension FoodDetailsViewController {
         private func getDetailResults(id: String) {
             APIManager.sharedInstance.getRecipesDetailRequest(id: id) { [weak self] response in
                 DispatchQueue.main.async {
-                    if let recipe = response {
-                        self?.recipe = recipe.recipe
+                    
+                    switch response {
+                        
+                    case .success(let result):
+                        self?.recipe = result.recipe
                         self?.shouldReloadContent?()
+                    case .failure(let error):
+                        print("error")
                     }
                 }
             }

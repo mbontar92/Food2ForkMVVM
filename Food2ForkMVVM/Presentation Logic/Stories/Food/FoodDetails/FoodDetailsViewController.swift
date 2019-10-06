@@ -11,6 +11,8 @@ import WebKit
 
 final class FoodDetailsViewController: UIViewController {
     
+    
+    // MARK: IBOutlets
     @IBOutlet private var recipeImageView: UIImageView!
     @IBOutlet private var ingredientsLabel: UILabel!
     @IBOutlet private var webView: WKWebView!
@@ -24,17 +26,18 @@ final class FoodDetailsViewController: UIViewController {
     var viewModel: ViewModel? {
         didSet {
             setUpViewModel()
-//            if self.viewModel?.showEmptyViewBool ?? true { showEmptyView()
-//            } else { hideEmptyView() }
-//            self.viewModel?.showEmptyViewBool = false
         }
     }
+    
+     // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         refreshUI()
     }
+    
+    //MARK: Public
 
     func setUpViewModel() {
         viewModel?.shouldReloadContent = { [weak self] in
@@ -47,6 +50,8 @@ final class FoodDetailsViewController: UIViewController {
         
         viewModel?.startLoadingData()
     }
+    
+    //MARK: Private
         
     private func refreshUI() {
         guard let recipe = viewModel?.recipe else {

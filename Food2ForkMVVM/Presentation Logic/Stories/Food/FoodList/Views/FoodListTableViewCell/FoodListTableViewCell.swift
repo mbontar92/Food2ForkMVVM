@@ -10,6 +10,8 @@ import UIKit
 
 final class FoodListTableViewCell: UITableViewCell {
 
+    // MARK: IBOutlets
+    
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeTitleLabel: UILabel!
@@ -33,6 +35,8 @@ final class FoodListTableViewCell: UITableViewCell {
         mainView.layer.cornerRadius = 7
     }
 }
+
+//MARK: Setup ViewModel
 
 private extension FoodListTableViewCell {
     

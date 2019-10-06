@@ -8,9 +8,6 @@
 
 import UIKit
 
-//protocol SelectedRecipeDelegate: class {
-//    func recipeSelected(_ recipe: RecipeModel)
-//}
 
 // classes marked with final can not be overridden.
 final class FoodListViewController: UIViewController {
@@ -25,8 +22,6 @@ final class FoodListViewController: UIViewController {
     // MARK: Variables
     
     var viewModel: ViewModel?
-    
-//    weak var delegate: SelectedRecipeDelegate?
     
     private var typingTimer: Timer?
     
@@ -141,7 +136,7 @@ extension FoodListViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - Screen presentation
+// MARK: - Detail Screen presentation
 
 private extension FoodListViewController {
     func showRecipeDetails(recipe: Recipe) {
